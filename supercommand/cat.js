@@ -26,7 +26,7 @@ if(filename=="*" || !filename){
 }else if(filename){
 	$.get("/public/"+filename,function(text){
 		//exist
-		if(item.filename.includes("json")){
+		if(filename.includes("json")){
 			text=JSON.stringify(text)
 		}
 		updateScreen(_cmd,text);
