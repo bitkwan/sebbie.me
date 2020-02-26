@@ -4,7 +4,6 @@
     	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Sebbie.Me</title>
-		<script src="lib/jquery-3.4.1.min.js"></script>
 		<style>
 			body{
 				background-color: #262626;
@@ -13,6 +12,8 @@
 				font-size:18px;
 				cursor: text;
 			}
+			::-moz-selection { color: #fff; background-color: #ccc;}
+			::selection { color: #fff; background-color: #ccc;}
 			.command-form{
 				padding-bottom: 10%;
 			}
@@ -52,9 +53,10 @@
 		<div class="screen"></div>
 		<div class="command-box">
 			<form method="POST" class="command-form">
-				<font color="green">guest</font>@<font color="red">sebbie.me</font>:~$ <input type="text" class="command-line">
+				<font color="green">guest</font>@<font color="red">sebbie.me</font>:~$ <input type="text" class="command-line" data-always-focus="1">
 			</form>
 		</div>
 	</body>
+	<script src="lib/jquery-3.4.1.min.js"></script>
 	<script src="lib/main.js"></script>
 </html>
