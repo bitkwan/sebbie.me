@@ -1,0 +1,49 @@
+<html>
+	<head>
+		<title>Sebbie.Me</title>
+		<script src="lib/jquery-3.4.1.min.js"></script>
+		<style>
+			body{
+				background-color: #262626;
+				color: #fff;
+				font-family: Consolas, monaco, monospace;
+			}
+			.command-line{
+				background: #262626;
+				color: #fff;
+				border: 0;
+				outline: none;
+				font-size:16px;
+				font-family: Consolas, monaco, monospace;
+			}
+
+			font[color=red]{
+				color: #ef5350;
+			}
+
+			font[color=green]{
+				color: #43a047;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="screen"></div>
+		<div class="command-box">
+			<form method="POST" class="command-form">
+				<font color="green">guest</font>@<font color="red">sebbie.me</font>:~$ <input type="text" class="command-line">
+			</form>
+		</div>
+	</body>
+	<script type="text/javascript">
+		$(".command-line").focus();
+		$(".command-form").submit(function(){
+			event.preventDefault();
+			_content = 	$(".screen").html();
+			_cmd = $(".command-line").val();
+			$.get("/command/"+_cmd+".html",function(text){
+				_full_cmd="<font color=\"green\">guest</font>@<font color=\"red\">sebbie.me</font>:~$ "+_cmd+"<br/>";
+				$(".screen").html(_content+"<p>"+_full_cmd+text+"</p>");
+			});
+		});
+	</script>
+</html>
