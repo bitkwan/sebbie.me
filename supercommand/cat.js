@@ -4,7 +4,7 @@ cmd_arr = _cmd.split(" ");
 filename = cmd_arr[1];
 
 
-if(filename=="*"){
+if(filename=="*" || !filename){
 	$.getJSON("public/map.json","",function(data){
 		localStorage.tmp="";
 		_i = 0;
@@ -23,9 +23,12 @@ if(filename=="*"){
 			});
 		});
 	});
-}else{
+}else if(filename){
 	$.get("/public/"+filename,function(text){
 		//exist
+		if(item.filename.includes("json")){
+			text=JSON.stringify(text)
+		}
 		updateScreen(_cmd,text);
 	}).fail(function(){
 		result="cat: "+filename+": No such file";
